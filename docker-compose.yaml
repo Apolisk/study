@@ -1,25 +1,25 @@
 version: "3.8"
 
 services:
-  app:
+  base: &shortener_app
     build:
       context: .
       dockerfile: Dockerfile
+    image: 'shortener_app'
     volumes:
       - .:/app
     working_dir: /app
-    command: python main.py
 
   mypy:
-    image: python:alpine
+    <<: *shortener_app
     volumes:
       - .:/app
     working_dir: /app
-    entrypoint: ["mypy", "main.py"]
+    command: ["mypy", "main.py"]
 
   flake8:
-    image: python:alpine
+    <<: *shortener_app
     volumes:
       - .:/app
     working_dir: /app
-    entrypoint: ["flake8", "."]
+    command: ["flake8", "."]
