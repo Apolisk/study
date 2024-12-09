@@ -2,7 +2,7 @@ import random
 from typing import Optional
 
 
-BASE_URL = "https://"
+BASE_URL = "https:"
 MAX_ATTEMPTS = 10
 
 nouns = ["fast", "evil"]
@@ -38,35 +38,35 @@ def login(user_id: int) -> int:
     return user_id in users
 
 
-def menu(user_id: int):
-    option = int(input(
-        f"User {user_id} already logged in\n"
-        f"1 - decrease url\n"
-        f"2 - expand url\n"
-        f"3 - login menu\n"
-        f"Choose option: "
-    ))
-    if option == 1:
-        long_url = input("Long url: ")
-        result = decrease_url(user_id, long_url)
-        if result is None:
-            print("Can`t save url")
-        else:
-            print(f"Short url: {result}")
-    elif option == 2:
-        short_url = input("Short url: ")
-        result = expand_url(user_id, short_url)
-        if result is None:
-            print("No long url saved")
-        else:
-            print(f"Long url is: {result}")
+# def menu(user_id: int):
+#     option = int(input(
+#         f"User {user_id} already logged in\n"
+#         f"1 - decrease url\n"
+#         f"2 - expand url\n"
+#         f"3 - login menu\n"
+#         f"Choose option: "
+#     ))
+#     if option == 1:
+#         long_url = input("Long url: ")
+#         result = decrease_url(user_id, long_url)
+#         if result is None:
+#             print("Can`t save url")
+#         else:
+#             print(f"Short url: {result}")
+#     elif option == 2:
+#         short_url = input("Short url: ")
+#         result = expand_url(user_id, short_url)
+#         if result is None:
+#             print("No long url saved")
+#         else:
+#             print(f"Long url is: {result}")
 
 
-while True:
-    try:
-        user_id = int(input("Enter your ID to log in: "))
-        exists = login(user_id)
-        if exists:
-            menu(user_id)
-    except ValueError:
-        print("Error. Enter correct ID.")
+# while True:
+#     try:
+#         user_id = int(input("Enter your ID to log in: "))
+#         exists = login(user_id)
+#         if exists:
+#             menu(user_id)
+#     except ValueError:
+#         print("Error. Enter correct ID.")
