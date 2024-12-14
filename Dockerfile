@@ -6,7 +6,9 @@ COPY requirements.txt /app/requirements.txt
 
 RUN pip install -r requirements.txt
 
-COPY main.py /app/main.py
+COPY . /app
 
-CMD ["python", "main.py"]
+EXPOSE 5000
+
+CMD ["flask", "--app",  "website", "run"]
 

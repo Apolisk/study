@@ -2,7 +2,7 @@ import random
 from typing import Optional
 
 
-BASE_URL = "https:"
+BASE_URL = "https://"
 MAX_ATTEMPTS = 10
 
 nouns = ["fast", "evil"]
