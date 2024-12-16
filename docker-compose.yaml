@@ -13,8 +13,8 @@ services:
   server:
     <<: *shortener_app
     ports:
-      - "5000:5000"
-    command: ["flask", "--app",  "website", "run"]
+      - "8000:8000"
+    command: ["fastapi", "dev", "--host", "0.0.0.0", "website.py"]
 
   mypy:
     <<: *shortener_app
