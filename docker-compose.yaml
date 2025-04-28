@@ -9,19 +9,17 @@ services:
     volumes:
       - .:/app
     working_dir: /app
+
+  server:
+    <<: *shortener_app
     ports:
-      - "5000:5000"
+      - "8000:8000"
+    command: ["fastapi", "dev", "--host", "0.0.0.0", "website.py"]
 
   mypy:
     <<: *shortener_app
-    volumes:
-      - .:/app
-    working_dir: /app
     command: ["mypy", "main.py"]
 
   flake8:
     <<: *shortener_app
-    volumes:
-      - .:/app
-    working_dir: /app
     command: ["flake8", "."]
